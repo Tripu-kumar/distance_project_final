@@ -1,0 +1,58 @@
+﻿@model IEnumerable<distanceproject.Models.distance>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+
+
+<html>
+<head>
+    <link href="~/css/ListStyleSheet.css" rel="stylesheet" />
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container mt-5 p-3 shadow  bg-white rounded cart">
+        <div class="row no-gutters">
+            <div class="col-md-8">
+                <div class="product-details mr-2">
+                    <div class="d-flex flex-row align-items-center"><i class="fa fa-long-arrow-left"></i><h2 class="ml-2">PREVIOUS SEARCHED LIST</h2></div>
+                    <hr>
+                    @foreach (var item in Model)
+                    {
+                        <div class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded">
+                            <div class="d-flex flex-row">
+                                
+                                <img src="~/css/finalmarker.jpg" width="40" />
+
+                                @*<img class="rounded" src="https://th.bing.com/th/id/OIP.mJMPC7BzwPoHjuzyeMG4WAHaHa?pid=ImgDet&rs=1" width="40">*@
+                                <div class="ml-2">
+                                    <span class="font-weight-bold d-block">@Html.DisplayFor(modelItem => item.date)</span>
+                                    <span class="spec">From:@Html.DisplayFor(modelItem => item.from_place),</span>
+                                    <span class="spec">To:@Html.DisplayFor(modelItem => item.To_place)</span>
+
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center"><span class="d-block ml-5 "> @Html.ActionLink("View On Map", "Details", new { id = item.distance_id }, new { @class = "btn btn-primary" })</span>
+                           
+                             @Html.ActionLink("", "Delete", new { id = item.distance_id }, new { @class = "fa fa-trash-o ml-3 deletecolor" })</div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="payment-info">
+                  
+
+                    <img src="~/css/map-world-point-vector.png" style=" height: 500px; width: 100%; border-radius: 5px;" />
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
